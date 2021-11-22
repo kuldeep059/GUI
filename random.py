@@ -1,9 +1,47 @@
-def add() :
 
- a = 10
- b = 20
- c = a+b
- print(c)
+import tkinter as tk
+from tkinter import ttk
 
-        #function called
-add()
+
+def entry():
+    # The get() method is used to fetch the value of a StringVar() instance.
+    # If user_name is empty, print Hello, World!
+    print(f"Hello, {user_name.get() or 'World'}!")
+    print(f"Timing:{user_timing.get()}")
+    print(f"Roll.no:{user_roll.get()}")
+
+
+root = tk.Tk()
+root.title("Entry")
+
+# Here we create an instances of the StringVar() class, which is to track the content of widgets
+user_name = tk.StringVar()
+user_timing = tk.IntVar()
+user_roll = tk.IntVar()
+
+
+name_label = ttk.Label(root, text="Name:")
+name_label.pack(side="left", padx=(0, 10))
+name_entry = ttk.Entry(root, width=15, textvariable=user_name)
+name_entry.pack(side="left")
+name_entry.focus()
+
+timing_label = ttk.Label(root, text="Timing:")
+timing_label.pack(side="left", padx=(0, 10))
+timing_entry = ttk.Entry(root, width=15, textvariable=user_timing)
+timing_entry.pack(side="left")
+timing_entry.focus()
+
+roll_label = ttk.Label(root, text="Roll.no:")
+roll_label.pack(side="left", padx=(0, 10))
+roll_entry = ttk.Entry(root, width=15, textvariable=user_roll)
+roll_entry.pack(side="left")
+roll_entry.focus()
+
+entry_button = ttk.Button(root, text="Enter", command=entry)
+entry_button.pack(side="left", fill="x", expand=True)
+quit_button = ttk.Button(root, text="Quit", command=root.destroy)
+quit_button.pack(side="right", fill="x", expand=True)
+
+root.mainloop()
+
